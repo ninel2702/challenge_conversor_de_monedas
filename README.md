@@ -10,48 +10,62 @@ Construir una aplicación en Java que:
 - Consuma una API de tasas de cambio.
 - Analice y manipule la respuesta JSON.
 - Permita filtrar monedas de interés.
-- Muestre los resultados de manera clara al usuario con menu interactivo.
+- Muestre los resultados de manera clara al usuario mediante un menú interactivo.
+- Genere un historial de conversiones realizadas.
+- Registre la fecha y hora de cada conversión.
+- Formatee los resultados para mostrarlos con claridad.
 
 ---
 
 ## 🛠️ Tecnologías Requeridas
 
-- **Java (se utilizo el JDK 17)**
-- **IDE de tu preferencia** (IntelliJ)
-- **Librería HTTP y JSON (como HttpURLConnection y GSON)**
-- Conexión a internet para acceder a la API de cambio de divisas.
+
+- **Java (JDK 17)**
+- **IDE de preferencia** (ej. IntelliJ)
+- **Librerías:**
+  - `HttpURLConnection` (para consumo de API)
+  - `java.time` (para fechas y horas)
+  - `java.text.DecimalFormat` (formateo de decimales)
+  - `Gson` (para manipulación de JSON)
+
+> Se requiere conexión a internet para acceder a la API de divisas.
 
 ---
 
 ## 📋 Pasos del Challenge
 
-1. **Configuración del Ambiente Java**  
-   Asegúrate de tener el JDK instalado y funcionando correctamente.
+1. **Configuración del entorno**  
+   Verifica que el JDK esté correctamente instalado y funcionando.
 
-2. **Creación del Proyecto**  
-   Estructura tu proyecto en paquetes según buenas prácticas.
+2. **Estructura del proyecto**  
+   Organiza el código en clases separadas siguiendo buenas prácticas.
 
 3. **Consumo de la API**  
-   Realiza solicitudes HTTP a una API pública de tasas de cambio (por ejemplo: [ExchangeRate API](https://www.exchangerate-api.com/)).
+   Realiza una petición HTTP a una API pública como [ExchangeRate API](https://www.exchangerate-api.com/).
 
-4. **Análisis de la Respuesta JSON**  
-   Procesa la respuesta de la API para extraer la información relevante.
+4. **Procesamiento de JSON**  
+   Analiza la respuesta y extrae las tasas de cambio necesarias.
 
-5. **Filtro de Monedas**  
-   Permite al usuario seleccionar o filtrar las monedas de interés.
+5. **Selección de monedas**  
+   El usuario podrá elegir entre distintas monedas predefinidas.
 
-6. **Exhibición de Resultados**  
-   Muestra los resultados en consola o interfaz (opcional) de forma clara y amigable.
+6. **Visualización del resultado**  
+   El resultado se muestra de manera clara y con decimales limitados.
 
+7. **Historial con marca de tiempo**  
+   Cada conversión se guarda junto con la fecha y hora de ejecución.
 ---
 
 
 ## 🧩 Estructura del Proyecto
 
-- `Principal.java` – Clase principal con menú interactivo.
-- `Conversor.java` – Contiene la lógica matemática para convertir divisas.
-- `Moneda.java` – Record para mapear la respuesta JSON.
-- `ConvertidorApi.java` – Consume la API y devuelve los datos mapeados.
+- `Principal.java` – Clase principal con el menú de navegación.
+- `Conversor.java` – Lógica de conversión matemática.
+- `Moneda.java` – `record` para mapear la respuesta JSON.
+- `ConvertidorApi.java` – Consume la API y devuelve los datos.
+- `Conversion.java` – Representa una conversión con sus datos.
+- `Historial.java` – Administra la lista de conversiones y su impresión.
+
 
 ## 📈 Monedas soportadas
 
@@ -60,6 +74,8 @@ La aplicación actualmente permite conversiones entre:
 - USD ↔ MXN
 - USD ↔ EUR
 - USD ↔ JPY
+- USD ↔ CAD
+- USD ↔ NOK
 
 Puedes agregar más divisas editando los `Currency Codes` usados.
 
@@ -94,8 +110,13 @@ Ingresa el valor numérico que deseas convertir:
 El sistema mostrará el monto convertido usando la tasa más actual:
 ![image](https://github.com/user-attachments/assets/8faae081-9b6f-4a3b-b618-14726d40ebf0)
 
+### 5. Historial con fecha
+El sistema mostrará todos los montos con la fecha que se consultaron el el programa:
+![image](https://github.com/user-attachments/assets/7e359dab-4355-495c-92a1-c358aca649b0)
 
-### 5. Salir
+
+
+### 6. Salir
 Al darle click al 7 el programa saldra del bucle y mostrara el texto de que se cerro la aplicación
 ![image](https://github.com/user-attachments/assets/864494c5-d266-4eaf-841f-2b01d21e9c70)
 
@@ -110,4 +131,4 @@ Al darle click al 7 el programa saldra del bucle y mostrara el texto de que se c
 
 
 
-Ninel 🦝
+*Creado con 💻 por Ninel 🦝*
